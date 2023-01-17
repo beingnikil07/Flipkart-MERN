@@ -1,8 +1,12 @@
 //Components..
+import Banner from "./Banner";
 import NavBar from "./NavBar";
 const Home = () => {
     return (
-        <NavBar />
+        <>
+            <NavBar />
+            <Banner />
+        </>
     )
 };
 export default Home;

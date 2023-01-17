@@ -11,3 +11,10 @@ export const Navdata = [
     { url: 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/46376ceed3448aff.png?q=100', text: 'Grocery' }
 
 ];
+
+export const Bannerdata = [
+    { id: 1, url: 'https://rukminim1.flixcart.com/fk-p-flap/844/140/image/c9167ea27bd06070.jpg?q=50' },
+    { id: 2, url: 'https://cdn.shopclues.com/images/banners/2023/Jan/17/HB4_MensClothing_Web_Esha_17Jan23.jpg' },
+    { id: 3, url: 'https://cdn.shopclues.com/images/banners/2023/Jan/17/HB2_Web_JMAX_Esha_17Jan23.jpg' },
+    { id: 4, url: 'https://cdn.shopclues.com/images/banners/2023/Jan/17/Jdd_HB3_Web_Riya_17Jan22.jpg' }
+];
