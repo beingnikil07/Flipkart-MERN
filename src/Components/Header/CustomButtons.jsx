@@ -1,5 +1,9 @@
+import { useState } from 'react';
 import { Box, Button, Typography, styled } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
+//Components
+import LoginDialog from '../Login/LoginDialog';
+
 const Wrapper = styled(Box)`
       display:flex;
       margin:0 3% 0 auto; 
@@ -24,15 +28,20 @@ const LoginButton = styled(Button)`
     height:32px;
 `;
 const CustomButtons = () => {
+  const [open, setOpen] = useState(false); //setting initial value of dialog box is false
+  const openDialog = () => {
+    setOpen(true);
+  }
   return (
     <Wrapper>
-      <LoginButton variant='contained'>Login</LoginButton>
+      <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
       <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
       <Container>
         <ShoppingCart />
         <Typography>Cart</Typography>
       </Container>
+      <LoginDialog open={open} setOpen={setOpen}/>  {/*Open aur setopen ko maine as a prop pass kiya aur send krr diya LoginDialog component ko so that ye bss login click prr he show aur band ho sake */}
     </Wrapper>
   )
 }
