@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';   //importing mongoose library
 
 const productSchema = new mongoose.Schema({
-    id: String,
+    id: {
+        type: String,
+        required:true,
+        unique: true
+    },
     url: String,
     detailUrl: String,
     title: Object,
