@@ -65,13 +65,20 @@ const AccountInitialValues = {
         heading: "Looks like you're new here!",
         subheading: "Sign up with your mobile number to get started"
     }
-
+}
+const InitialSignUpValues = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+    phone: ""
 }
 
 const LoginDialog = ({ open, setOpen }) => {
     //State mai initially login wala object rakha maine
-    const [account, toggleAccount] = useState(AccountInitialValues.login)
-
+    const [account, toggleAccount] = useState(AccountInitialValues.login);
+    const [signUp, setSignUp] = useState(InitialSignUpValues);
     const toggleSignUp = () => {
         toggleAccount(AccountInitialValues.signup);
     }
@@ -79,6 +86,11 @@ const LoginDialog = ({ open, setOpen }) => {
     const handleClose = () => {
         setOpen(false);
         toggleAccount(AccountInitialValues.login); // login ko hatane ke baad dobara se login he show ho isliye state ko change kiya close hone prr
+    }
+    const onInputChange = (e) => {
+        setSignUp({ ...signUp, [e.target.name]: e.target.value });   //setting up values in state
+        console.log(signUp);
+
     }
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
@@ -101,12 +113,12 @@ const LoginDialog = ({ open, setOpen }) => {
                             </FormWrapper>
                             :
                             <FormWrapper>  {/*Wrapper for right */}
-                                <TextField variant='standard' label="Enter Firstname" />
-                                <TextField variant='standard' label="Enter Lastname" />
-                                <TextField variant='standard' label="Enter Username" />
-                                <TextField variant='standard' label="Enter Email" />
-                                <TextField variant='standard' label="Enter Password" />
-                                <TextField variant='standard' label="Enter Mobile" />
+                                <TextField variant='standard' onChange={(e) => onInputChange(e)} name="firstname" label="Enter Firstname" />
+                                <TextField variant='standard' onChange={(e) => onInputChange(e)} name="lastname" label="Enter Lastname" />
+                                <TextField variant='standard' onChange={(e) => onInputChange(e)} name="username" label="Enter Username" />
+                                <TextField variant='standard' onChange={(e) => onInputChange(e)} name="email" label="Enter Email" />
+                                <TextField variant='standard' onChange={(e) => onInputChange(e)} name="password" label="Enter Password" />
+                                <TextField variant='standard' onChange={(e) => onInputChange(e)} name="phone" label="Enter Mobile" />
                                 <LoginButton>Continue</LoginButton>
                             </FormWrapper>
                     }
@@ -117,9 +129,3 @@ const LoginDialog = ({ open, setOpen }) => {
 
 }
 export default LoginDialog;
-
-
-
-
-//True rahega to login wala form rahega agar false hoti hai condition to chalega hamara signup wala
-//avv conditions ko hum aaise likhenge to hai nii hum state ke through conditions ko handle karenge  
