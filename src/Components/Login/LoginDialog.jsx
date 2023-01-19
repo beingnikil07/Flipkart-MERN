@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import { Box, Button, TextField, Typography, styled } from '@mui/material';
-
+import { AuthenticateSignUp } from '../../services/api'; //  importing api to post the signup user data to server
 const OutmostWrapper = styled(Box)`
     height:70vh; 
     width:90vh;
@@ -79,18 +79,24 @@ const LoginDialog = ({ open, setOpen }) => {
     //State mai initially login wala object rakha maine
     const [account, toggleAccount] = useState(AccountInitialValues.login);
     const [signUp, setSignUp] = useState(InitialSignUpValues);
+
     const toggleSignUp = () => {
         toggleAccount(AccountInitialValues.signup);
     }
-
+    //To close the dialog box
     const handleClose = () => {
         setOpen(false);
         toggleAccount(AccountInitialValues.login); // login ko hatane ke baad dobara se login he show ho isliye state ko change kiya close hone prr
     }
+    //To get the user signup data...
     const onInputChange = (e) => {
         setSignUp({ ...signUp, [e.target.name]: e.target.value });   //setting up values in state
         console.log(signUp);
-
+    }
+    //To post the signup user data 
+    const signUpUser = async () => {
+        //iss api ke result ko mai ek variable mai store karwa rha hu 
+        let response = await AuthenticateSignUp(signUp);   //passing user signup data to api
     }
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
@@ -119,7 +125,7 @@ const LoginDialog = ({ open, setOpen }) => {
                                 <TextField variant='standard' onChange={(e) => onInputChange(e)} name="email" label="Enter Email" />
                                 <TextField variant='standard' onChange={(e) => onInputChange(e)} name="password" label="Enter Password" />
                                 <TextField variant='standard' onChange={(e) => onInputChange(e)} name="phone" label="Enter Mobile" />
-                                <LoginButton>Continue</LoginButton>
+                                <LoginButton onClick={()=>signUpUser()}>Continue</LoginButton>
                             </FormWrapper>
                     }
                 </Box>
