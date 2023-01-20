@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Dialog from '@mui/material/Dialog';
 import { Box, Button, TextField, Typography, styled } from '@mui/material';
 import { AuthenticateSignUp } from '../../services/api'; //  importing api to post the signup user data to server
+import { dataContext } from '../../context/dataProvider';  //Importing context 
+
 const OutmostWrapper = styled(Box)`
     height:70vh; 
     width:90vh;
@@ -79,6 +81,8 @@ const LoginDialog = ({ open, setOpen }) => {
     //State mai initially login wala object rakha maine
     const [account, toggleAccount] = useState(AccountInitialValues.login);
     const [signUp, setSignUp] = useState(InitialSignUpValues);
+    //extracting states from context
+    const { Account, setAccont } = useContext(dataContext); //extracting states from context
 
     const toggleSignUp = () => {
         toggleAccount(AccountInitialValues.signup);
@@ -99,7 +103,8 @@ const LoginDialog = ({ open, setOpen }) => {
         let response = await AuthenticateSignUp(signUp);   //passing user signup data to api
         // Avv api se response aata hai to hum dialog ko close karna chahenge 
         if (!response) return;
-        handleClose();   // It will close the dialog box 
+        handleClose();   // It will close the dialog box
+        setAccont(signUp.firstname);
     }
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>

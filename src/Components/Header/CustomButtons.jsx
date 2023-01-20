@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Box, Button, Typography, styled } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
+import { dataContext } from '../../context/dataProvider'; //importing context
 //Components
 import LoginDialog from '../Login/LoginDialog';
 
@@ -29,19 +30,28 @@ const LoginButton = styled(Button)`
 `;
 const CustomButtons = () => {
   const [open, setOpen] = useState(false); //setting initial value of dialog box is false
+  const { Account } = useContext(dataContext);
+  //i'm not extracting setAccount becz here i don't want to set state 
+  //mai yha setAccount ko bhi le sakta hu but fayda kya jvv use he nii karna uska to 
+
   const openDialog = () => {
     setOpen(true);
   }
   return (
     <Wrapper>
-      <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
+      {/*Conditional rendering,agar Account mai value hai to dikha do otherwise login ke dikha do */}
+      {
+        Account ? <Typography>{Account}</Typography>
+          : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
+
+      }
       <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
       <Container>
         <ShoppingCart />
         <Typography>Cart</Typography>
       </Container>
-      <LoginDialog open={open} setOpen={setOpen}/>  {/*Open aur setopen ko maine as a prop pass kiya aur send krr diya LoginDialog component ko so that ye bss login click prr he show aur band ho sake */}
+      <LoginDialog open={open} setOpen={setOpen} />  {/*Open aur setopen ko maine as a prop pass kiya aur send krr diya LoginDialog component ko so that ye bss login click prr he show aur band ho sake */}
     </Wrapper>
   )
 }
