@@ -97,6 +97,9 @@ const LoginDialog = ({ open, setOpen }) => {
     const signUpUser = async () => {
         //iss api ke result ko mai ek variable mai store karwa rha hu 
         let response = await AuthenticateSignUp(signUp);   //passing user signup data to api
+        // Avv api se response aata hai to hum dialog ko close karna chahenge 
+        if (!response) return;
+        handleClose();   // It will close the dialog box 
     }
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
@@ -125,7 +128,7 @@ const LoginDialog = ({ open, setOpen }) => {
                                 <TextField variant='standard' onChange={(e) => onInputChange(e)} name="email" label="Enter Email" />
                                 <TextField variant='standard' onChange={(e) => onInputChange(e)} name="password" label="Enter Password" />
                                 <TextField variant='standard' onChange={(e) => onInputChange(e)} name="phone" label="Enter Mobile" />
-                                <LoginButton onClick={()=>signUpUser()}>Continue</LoginButton>
+                                <LoginButton onClick={() => signUpUser()}>Continue</LoginButton>
                             </FormWrapper>
                     }
                 </Box>
