@@ -41,8 +41,7 @@ const CustomButtons = () => {
     <Wrapper>
       {/*Conditional rendering,agar Account mai value hai to dikha do otherwise login ke dikha do */}
       {
-        Account ? <Typography>{Account}</Typography>
-          : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
+        Account ? <Typography>{Account}</Typography> : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
 
       }
       <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>

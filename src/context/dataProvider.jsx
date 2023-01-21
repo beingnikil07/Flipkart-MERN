@@ -6,7 +6,11 @@ import { createContext, useState } from "react";
 export const dataContext = createContext(null);
 
 //Creating a react functional component... 
-const DataProvider = () => {
+//App.js mai humne apne sabhi components ko wrap kiya hua hai dataProvider se to ya bol lo parent 
+//jo hai sabhi components ka app.js mai dataProvider he hai .
+//to isliye hum idhar children ko nikal rhe hai 
+//Aur phir end mai hum  inko forward bhi krr rhe hai yha se 
+const DataProvider = ({ children }) => {
 
     const [Account, setAccount] = useState('');
 
@@ -21,6 +25,7 @@ const DataProvider = () => {
             Account,
             setAccount
         }}>
+            {children}
         </dataContext.Provider>
     )
 

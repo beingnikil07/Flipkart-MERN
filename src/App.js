@@ -5,7 +5,6 @@ import DataProvider from './context/dataProvider';
 function App() {
   /*  DataProvider se maine apne saare project ke components ko isliye wrap krr diya jisse
       mai apne pure project mai use krr pau data provider mai rakhi states aur values ko
-  
   */
   return (
     <DataProvider>

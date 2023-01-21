@@ -82,7 +82,7 @@ const LoginDialog = ({ open, setOpen }) => {
     const [account, toggleAccount] = useState(AccountInitialValues.login);
     const [signUp, setSignUp] = useState(InitialSignUpValues);
     //extracting states from context
-    const { Account, setAccont } = useContext(dataContext); //extracting states from context
+    const { Account, setAccount } = useContext(dataContext); //extracting states from context
 
     const toggleSignUp = () => {
         toggleAccount(AccountInitialValues.signup);
@@ -104,7 +104,7 @@ const LoginDialog = ({ open, setOpen }) => {
         // Avv api se response aata hai to hum dialog ko close karna chahenge 
         if (!response) return;
         handleClose();   // It will close the dialog box
-        setAccont(signUp.firstname);
+        setAccount(signUp.firstname);
     }
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
