@@ -1,4 +1,6 @@
 import axios from "axios";
+
+//for Signup
 const URL = "http://localhost:5000";
 export const AuthenticateSignUp = async (data) => {
     try {
@@ -9,3 +11,15 @@ export const AuthenticateSignUp = async (data) => {
     }
 
 }
+
+//for login
+
+export const AuthenticateLogin = async (data) => {
+    try {
+        return await axios.post(`${URL}/login`, data);
+
+    } catch (error) {
+        console.log("Error while calling login api", error);
+    }
+}
+
