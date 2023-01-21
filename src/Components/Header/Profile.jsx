@@ -11,7 +11,7 @@ const LogOut = styled(Typography)`
 `;
 
 //receiving props through destructuring
-const Profile = ({ Account }) => {
+const Profile = ({ Account, setAccount }) => {
     const [open, setOpen] = useState(false);
     const handleClick = (event) => {
         setOpen(event.currentTarget);
@@ -19,6 +19,9 @@ const Profile = ({ Account }) => {
     const handleClose = () => {
         setOpen(false);
     }
+    const logOutUser = () => {
+        setAccount('');       //so that user can logout 
+    };
     return (
         <>
             <Box onClick={handleClick}><Typography style={{ marginTop: 2 }}>{Account}</Typography></Box>
@@ -27,7 +30,7 @@ const Profile = ({ Account }) => {
                 open={Boolean(open)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => { handleClose(); logOutUser(); }}>
                     <PowerSettingsNewIcon color="primary" />
                     <LogOut>Logout</LogOut>
                 </MenuItem>

@@ -31,7 +31,7 @@ const LoginButton = styled(Button)`
 `;
 const CustomButtons = () => {
   const [open, setOpen] = useState(false); //setting initial value of dialog box is false
-  const { Account } = useContext(dataContext);
+  const { Account,setAccount} = useContext(dataContext);
   //i'm not extracting setAccount becz here i don't want to set state 
   //mai yha setAccount ko bhi le sakta hu but fayda kya jvv use he nii karna uska to 
 
@@ -42,7 +42,7 @@ const CustomButtons = () => {
     <Wrapper>
       {/*Conditional rendering,agar Account mai value hai to dikha do otherwise login ke dikha do */}
       {
-        Account ? <Profile Account={Account} /> : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
+        Account ? <Profile Account={Account} setAccount={setAccount} /> : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
 
       }
       <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
