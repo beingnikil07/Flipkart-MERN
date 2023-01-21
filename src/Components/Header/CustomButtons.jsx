@@ -4,6 +4,7 @@ import { ShoppingCart } from '@mui/icons-material';
 import { dataContext } from '../../context/dataProvider'; //importing context
 //Components
 import LoginDialog from '../Login/LoginDialog';
+import Profile from './Profile';
 
 const Wrapper = styled(Box)`
       display:flex;
@@ -41,7 +42,7 @@ const CustomButtons = () => {
     <Wrapper>
       {/*Conditional rendering,agar Account mai value hai to dikha do otherwise login ke dikha do */}
       {
-        Account ? <Typography>{Account}</Typography> : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
+        Account ? <Profile Account={Account} /> : <LoginButton variant='contained' onClick={() => openDialog()}>Login</LoginButton>
 
       }
       <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
