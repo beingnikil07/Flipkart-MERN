@@ -26,7 +26,8 @@ export const userLogin = async (req, res) => {
         const password = req.body.password;
         let user = await User.findOne({ username: username, password: password });   //ye database se find karega requested user ko
         if (user) {
-            return res.status(200).json(`${username} login successfully`);
+            //Avv mai yha ek data field bhej rha hu jisme mai user kii all details send krr rha hu
+            return res.status(200).json({ data: user });
         } else {
             return res.status(401).json('Invalid Login,Please try again');
         }

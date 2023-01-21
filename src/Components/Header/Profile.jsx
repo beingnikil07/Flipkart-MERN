@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, Typography, Menu, MenuItem, styled } from "@mui/material";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const MenuComponent = styled(Menu)`
     margin-top:8px;
@@ -8,6 +9,9 @@ const MenuComponent = styled(Menu)`
 const LogOut = styled(Typography)`
         font-size:14px;
         margin-left:20px;
+`;
+const BoxDp = styled(Box)`
+   display:flex;
 `;
 
 //receiving props through destructuring
@@ -24,7 +28,7 @@ const Profile = ({ Account, setAccount }) => {
     };
     return (
         <>
-            <Box onClick={handleClick}><Typography style={{ marginTop: 2 }}>{Account}</Typography></Box>
+            <BoxDp onClick={handleClick}><AccountCircleIcon /><Typography style={{ marginTop: 2, marginLeft: 5 }}>{Account}</Typography></BoxDp>
             <MenuComponent
                 anchorEl={open}
                 open={Boolean(open)}

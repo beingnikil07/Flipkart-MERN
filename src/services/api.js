@@ -20,6 +20,7 @@ export const AuthenticateLogin = async (data) => {
 
     } catch (error) {
         console.log("Error while calling login api", error);
+        return error.response;
     }
 }
 

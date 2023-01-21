@@ -55,6 +55,10 @@ const CreateAccount = styled(Typography)`
     font-weight:600;
     cursor:pointer;
  `;
+const ErrorMsg = styled(Typography)`
+    font-size:12px;
+    color:red;
+ `;
 
 const AccountInitialValues = {
     login: {
@@ -86,6 +90,7 @@ const LoginDialog = ({ open, setOpen }) => {
     const [account, toggleAccount] = useState(AccountInitialValues.login);
     const [signUp, setSignUp] = useState(InitialSignUpValues);
     const [login, setLogin] = useState(InitialLoginValues);
+    const [error, setError] = useState(false);
     //extracting states from context
     const { Account, setAccount } = useContext(dataContext); //extracting states from context
 
@@ -96,6 +101,7 @@ const LoginDialog = ({ open, setOpen }) => {
     const handleClose = () => {
         setOpen(false);
         toggleAccount(AccountInitialValues.login); // login ko hatane ke baad dobara se login he show ho isliye state ko change kiya close hone prr
+        setError(false);
     }
     //To get the user signup data...
     const onInputChange = (e) => {
@@ -117,6 +123,13 @@ const LoginDialog = ({ open, setOpen }) => {
     //ye hamare login button prr click karte he api ke through data frontend prr lakar login karwa dega
     const LoginUser = async () => {
         let response = await AuthenticateLogin(login);
+        console.log(response);
+        if (response.status === 200) {
+            handleClose();
+            setAccount(response.data.data.firstname);
+        } else {
+            setError(true);
+        }
     }
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
@@ -129,7 +142,8 @@ const LoginDialog = ({ open, setOpen }) => {
                     {
                         account.view === 'login' ?
                             <FormWrapper>  {/*Wrapper for right */}
-                                <TextField variant='standard' onChange={(e) => onValueChange(e)} name="username" label="Enter Email/Mobile number" />
+                                <TextField variant='standard' onChange={(e) => onValueChange(e)} name="username" label="Enter Username" />
+                                {error && <ErrorMsg>Please enter valid Email/Password</ErrorMsg>}
                                 <TextField variant='standard' onChange={(e) => onValueChange(e)} name="password" label="Enter Password" />
                                 <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
                                 <LoginButton onClick={() => LoginUser()}>Login</LoginButton>
