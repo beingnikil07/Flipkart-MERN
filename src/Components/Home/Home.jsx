@@ -3,17 +3,20 @@ import { useDispatch } from "react-redux";
 import { getProducts } from '../../redux/actions/productActions'; //isme hamari api rakhi hui hai 
 import { useSelector } from "react-redux";
 //Components..
-import Banner from "./Banner";
 import NavBar from "./NavBar";
+import Banner from "./Banner";
+import Slide from "./Slide";
 import { Box, styled } from '@mui/material';
+
+
 const Wrapper = styled(Box)`
     padding:10px 10px;
     background:#f2f2f2;
 `;
 const Home = () => {
     //object destructuring from getProducts redux state 
-   const {products}= useSelector(state => state.getProducts); //ye getProducts reducer wala nii ye redux kii state hai 
-   console.log(products);   //this will show you all products 
+    const { products } = useSelector(state => state.getProducts); //ye getProducts reducer wala nii ye redux kii state hai 
+    console.log(products);   //this will show you all products 
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -30,6 +33,7 @@ const Home = () => {
             <NavBar />
             <Wrapper>
                 <Banner />
+                <Slide products={products} />   {/*Passing products to slide component */}
             </Wrapper>
         </>
     )
