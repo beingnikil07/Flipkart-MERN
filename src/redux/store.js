@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import { getProductsReducer } from "./reducers/productReducer";
 
 //combineReducers basically ek fun hota hai jo ek argument ko leta hai as a object kii form mai
 const reducer = combineReducers({
