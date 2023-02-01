@@ -33,7 +33,14 @@ const Home = () => {
             <NavBar />
             <Wrapper>
                 <Banner />
-                <Slide products={products} />   {/*Passing products to slide component */}
+                <Slide products={products} title="Deal of the Day" timer={true} />   {/*Passing products to slide component */}
+                <Slide products={products} title="Top Deals" timer={false} />
+                <Slide products={products} title="Top Selection" timer={false} />
+                <Slide products={products} title="Recommanded Items" timer={false} />
+                <Slide products={products} title="Shop for Your Valentine" timer={false} />
+                <Slide products={products} title="Wedding & Gifting Specials" timer={false} />
+                <Slide products={products} title="Sports, Healthcare & more" timer={false} />
+                <Slide products={products} title="Top Deals On TVs & Appliances" timer={false} />
             </Wrapper>
         </>
     )
