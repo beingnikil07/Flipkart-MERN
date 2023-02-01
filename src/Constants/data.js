@@ -18,3 +18,9 @@ export const Bannerdata = [
     { id: 3, url: 'https://cdn.shopclues.com/images/banners/2023/Jan/17/HB2_Web_JMAX_Esha_17Jan23.jpg' },
     { id: 4, url: 'https://cdn.shopclues.com/images/banners/2023/Jan/17/Jdd_HB3_Web_Riya_17Jan22.jpg' }
 ];
+
+export const imageURL = [
+    'https://rukminim1.flixcart.com/flap/960/960/image/2f30db9425df5cec.jpg?q=50',
+    'https://rukminim1.flixcart.com/flap/960/960/image/084789479074d2b2.jpg',
+    'https://rukminim1.flixcart.com/flap/960/960/image/1ce0c4c1fb501b45.jpg?q=50'
+];
