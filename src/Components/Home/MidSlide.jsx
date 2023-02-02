@@ -1,22 +1,26 @@
 import Slide from "./Slide";
-import { Box,styled} from '@mui/material';
-import { border } from "@mui/system";
+import { Box, styled } from '@mui/material';
 
-const Component=styled(Box)`
+const Component = styled(Box)`
     display:flex;
 `;
-const LeftBox=styled(Box)`
-    width:83%;
-`;
-const RightBox=styled(Box)`
-    background-color:#ffffff;
-    padding:10px;
-    margin-top:10px;
-    margin-left:10px;
-    width:18%;
-    text-align:center;
-     
-`;
+const LeftBox = styled(Box)(({ theme }) => ({
+    width: '83%',
+    [theme.breakpoints.down('md')]: {
+        width: '100%'
+    }
+}));
+const RightBox = styled(Box)(({ theme }) => ({
+    backgroundColor: '#ffffff',
+    padding: 10,
+    marginTop: 10,
+    marginLeft: 10,
+    width: '18%',
+    textAlign: 'center',
+    [theme.breakpoints.down('md')]: {
+        display: 'none'
+    }
+}));
 
 
 const MidSlide = ({ products, title, timer }) => {
@@ -31,7 +35,7 @@ const MidSlide = ({ products, title, timer }) => {
                 />
             </LeftBox>
             <RightBox>
-                <img src={addUrl} alt="advertisement" style={{width:238}} />
+                <img src={addUrl} alt="advertisement" style={{ width: 238 }} />
             </RightBox>
         </Component>
     )
