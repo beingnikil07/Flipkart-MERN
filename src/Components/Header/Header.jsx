@@ -2,6 +2,8 @@ import React from 'react';
 import { AppBar, Toolbar, styled, Box, Typography } from '@mui/material';
 import SearchBox from './SearchBox';
 import CustomButtons from './CustomButtons';
+import { Link } from 'react-router-dom';
+
 const StyledHeader = styled(AppBar)`
         background:#2874f0;
         height:55px;
@@ -26,23 +28,26 @@ const logoUrl = "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-
 const subUrl = "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png";
 const Header = () => {
     return (
-        <StyledHeader>
-            <Toolbar style={{ minHeight: 55 }}>
-                <Component>
-                    <img src={logoUrl} alt="logo" style={{ width: 75 }} />
-                    <Box style={{ display: 'flex' }}>
-                        <SubHeading>Explore&nbsp;
-                            <Box component="span" style={{ color: '#ffe500' }}>Plus</Box>
-                        </SubHeading>
-                        <PlusLogo src={subUrl} alt="sub-logo" />
-                    </Box>
-                </Component>
-                <SearchBox />
-                <CustomButtonWrapper>
-                    <CustomButtons />
-                </CustomButtonWrapper>
-            </Toolbar>
-        </StyledHeader>
+        <Link to='/' >
+            <StyledHeader>
+                <Toolbar style={{ minHeight: 55 }}>
+
+                    <Component>
+                        <img src={logoUrl} alt="logo" style={{ width: 75 }} />
+                        <Box style={{ display: 'flex' }}>
+                            <SubHeading>Explore&nbsp;
+                                <Box component="span" style={{ color: '#ffe500' }}>Plus</Box>
+                            </SubHeading>
+                            <PlusLogo src={subUrl} alt="sub-logo" />
+                        </Box>
+                    </Component>
+                    <SearchBox />
+                    <CustomButtonWrapper>
+                        <CustomButtons />
+                    </CustomButtonWrapper>
+                </Toolbar>
+            </StyledHeader>
+        </Link>
     )
 }
 export default Header;
