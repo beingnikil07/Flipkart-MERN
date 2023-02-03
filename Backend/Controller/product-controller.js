@@ -11,5 +11,16 @@ export const getProducts = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-
 };
+
+
+export const getProductById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const singleProduct = await Product.findOne({ 'id': id });
+        res.status(200).json(singleProduct);
+    } catch (error) {
+
+        res.status(500).json({ message: error.message });
+    }
+}
