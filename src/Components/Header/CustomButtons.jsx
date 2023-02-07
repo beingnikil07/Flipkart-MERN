@@ -6,18 +6,27 @@ import { dataContext } from '../../context/dataProvider'; //importing context
 import LoginDialog from '../Login/LoginDialog';
 import Profile from './Profile';
 
-const Wrapper = styled(Box)`
-      display:flex;
-      margin:0 3% 0 auto; 
-      &>button,&>p,&>div{
-        margin-right:40px;
-        font-size:15px; 
-        align-items:center;
-      }
-`;
-const Container = styled(Box)`
-    display:flex;
-`;
+const Wrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  margin: '0 3% 0 auto',
+  '&>*': {
+    marginRight: 40,
+    fontSize: 15,
+    alignItems: 'center'
+  },
+  [theme.breakpoints.down('md')]: {
+   display: 'block'
+}
+}))
+
+const Container = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  [theme.breakpoints.down('md')]: {
+    display: 'block'
+  }
+
+}))
+
 
 const LoginButton = styled(Button)`
     color:#2874f0;
@@ -31,7 +40,7 @@ const LoginButton = styled(Button)`
 `;
 const CustomButtons = () => {
   const [open, setOpen] = useState(false); //setting initial value of dialog box is false
-  const { Account,setAccount} = useContext(dataContext);
+  const { Account, setAccount } = useContext(dataContext);
   //i'm not extracting setAccount becz here i don't want to set state 
   //mai yha setAccount ko bhi le sakta hu but fayda kya jvv use he nii karna uska to 
 
