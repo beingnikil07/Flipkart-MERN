@@ -4,10 +4,9 @@ import { Box } from '@mui/material';
 import DataProvider from './context/dataProvider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDescription from './Components/Details/productDescription';
+import Cart from './Components/Cart/Cart';
+
 function App() {
-  /*  DataProvider se maine apne saare project ke components ko isliye wrap krr diya jisse
-      mai apne pure project mai use krr pau data provider mai rakhi states aur values ko
-  */
   return (
     <DataProvider>
       <BrowserRouter>
@@ -16,6 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/product/:id' element={<ProductDescription />} ></Route>
+            <Route path='/cart' element={<Cart />}></Route>
           </Routes>
         </Box>
       </BrowserRouter>
