@@ -7,7 +7,7 @@ const ComponentBox = styled(Box)(({ theme }) => ({
     display: 'flex',
     margin: '55px 130px 0px 130px',
     justifyContent: 'space-between',
-    overflow:'hidden',
+    overflow: 'hidden',
     [theme.breakpoints.down('lg')]: {
         margin: 0
     }
@@ -25,16 +25,18 @@ const Text = styled(Typography)`
 
 const NavBar = () => {
     return (
-        <ComponentBox>
-            {
-                Navdata.map(data => (
-                    <ContainerMap>
-                        <img src={data.url} alt="products-categories" style={{ width: 64 }} />
-                        <Text>{data.text}</Text>
-                    </ContainerMap>
-                ))
-            }
-        </ComponentBox>
+        <Box style={{ background: '#fff' }}>
+            <ComponentBox>
+                {
+                    Navdata.map(data => (
+                        <ContainerMap>
+                            <img src={data.url} alt="products-categories" style={{ width: 64 }} />
+                            <Text>{data.text}</Text>
+                        </ContainerMap>
+                    ))
+                }
+            </ComponentBox>
+        </Box>
     )
 }
 export default NavBar;
