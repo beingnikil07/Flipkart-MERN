@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
-import { Box, Button, Typography, styled } from '@mui/material';
+import { Box, Button, Typography, styled, Badge } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import { dataContext } from '../../context/dataProvider'; //importing context
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 //Components
 import LoginDialog from '../Login/LoginDialog';
 import Profile from './Profile';
@@ -15,12 +17,14 @@ const Wrapper = styled(Box)(({ theme }) => ({
     alignItems: 'center'
   },
   [theme.breakpoints.down('md')]: {
-   display: 'block'
-}
+    display: 'block'
+  }
 }))
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Link)(({ theme }) => ({
   display: 'flex',
+  textDecoration: 'none',
+  color: 'inherit',
   [theme.breakpoints.down('md')]: {
     display: 'block'
   }
@@ -47,6 +51,7 @@ const CustomButtons = () => {
   const openDialog = () => {
     setOpen(true);
   }
+  const { cartItems } = useSelector(state => state.cart);
   return (
     <Wrapper>
       {/*Conditional rendering,agar Account mai value hai to dikha do otherwise login ke dikha do */}
@@ -56,9 +61,11 @@ const CustomButtons = () => {
       }
       <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
-      <Container>
-        <ShoppingCart />
-        <Typography>Cart</Typography>
+      <Container to="/cart">
+        <Badge badgeContent={cartItems?.length} color="primary">
+          <ShoppingCart />
+        </Badge>
+        <Typography style={{marginLeft:'5px'}}>Cart</Typography>
       </Container>
       <LoginDialog open={open} setOpen={setOpen} />  {/*Open aur setopen ko maine as a prop pass kiya aur send krr diya LoginDialog component ko so that ye bss login click prr he show aur band ho sake */}
     </Wrapper>

@@ -3,11 +3,16 @@ import { useSelector } from "react-redux";
 //components
 import CartItems from './CartItems';
 import TotalBalance from './TotalBalance';
+import EmptyCart from './EmptyCart';
 
 
-const Container = styled(Grid)`
-    padding:20px 135px;
-`;
+const Container = styled(Grid)(({ theme }) => ({
+    padding: '20px 135px',
+    [theme.breakpoints.down('md')]: {
+        padding: '15px 0px'
+    }
+}));
+
 const Header = styled(Box)`
     padding:15px 24px;
     background:#fff;
@@ -29,6 +34,9 @@ const BtnOrder = styled(Button)`
     height:50px; 
     border-radius:2px;
 `;
+const LeftContainer = styled(Grid)(({ theme }) => ({
+    paddingRight: '15px',
+}));
 
 const Cart = () => {
     const { cartItems } = useSelector(state => state.cart);
@@ -37,7 +45,7 @@ const Cart = () => {
             {
                 cartItems.length ?
                     <Container container>
-                        <Grid item lg={9} md={9} sm={12} xs={12}>
+                        <LeftContainer item lg={9} md={9} sm={12} xs={12}>
                             <Header>
                                 <Typography>My Cart({cartItems.length}) </Typography>
                             </Header>
@@ -51,12 +59,12 @@ const Cart = () => {
                             <ButtonWrapper>
                                 <BtnOrder>Place Order</BtnOrder>
                             </ButtonWrapper>
-                        </Grid>
+                        </LeftContainer>
                         <Grid item lg={3} md={3} sm={12} xs={12}>
-                            <TotalBalance />
+                            <TotalBalance cartItems={cartItems} />
                         </Grid>
                     </Container>
-                    : <div>Empty</div>
+                    : <EmptyCart />
             }
         </>
     )
