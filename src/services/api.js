@@ -24,3 +24,13 @@ export const AuthenticateLogin = async (data) => {
     }
 }
 
+//for payment
+
+export const PayWithPaytm = async (data) => {
+    try {
+        let res = await axios.post(`${URL}/payment`, data);
+        return res;
+    } catch (err) {
+        console.log("Error while calling payment api", err);
+    }
+}
