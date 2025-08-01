@@ -1,70 +1,175 @@
-# Getting Started with Create React App
+# 🛒 Flipkart Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack **Flipkart Clone** built using the **MERN stack (MongoDB, Express, React, Node.js)**. This project replicates core functionalities of the Flipkart e-commerce platform — including product listings, cart, login/signup, checkout, and admin functionalities.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔥 Key Features
 
-### `npm start`
+- 🛍️ User authentication with JWT (Login / Register)
+- 📦 Product listing with categories
+- 🛒 Add to Cart & Checkout flow
+- 💳 Payment gateway
+- 🧾 Order history
+- 🌐 Fully responsive UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Tech Stack
 
-### `npm test`
+### 🧠 Frontend
+- React.js
+- Redux (Toolkit or Thunk)
+- Axios
+- React Router DOM
+- Material UI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🛠 Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT for auth
+- bcryptjs for password hashing
+- dotenv for environment variables
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📁 Folder Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+flipkart-clone/
+│
+├── backend/
+│   ├── config/            # DB config & environment
+│   ├── controllers/       # Business logic
+│   ├── middleware/        # Auth, error handling
+│   ├── models/            # Mongoose schemas
+│   ├── routes/            # API endpoints
+│   ├── utils/             # Helper functions
+│   ├── server.js          # Entry point
+│   └── .env
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── components/    # Reusable UI
+│       ├── screens/       # Pages (Home, Login, Cart, etc.)
+│       ├── redux/         # Redux store setup
+│       ├── App.js
+│       ├── index.js
+│       └── App.css
 
-### `npm run eject`
+├── .gitignore
+├── README.md
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📸 Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+screenshots/
+├── home.png
+├── product-page.png
+├── cart.png
+├── checkout.png
+├── admin-dashboard.png
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧑‍💻 Installation & Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Clone the Repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/beingnikil07/flipkart-MERN.git
+cd flipkart-clone
+```
 
-### Code Splitting
+### 2. Backend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+cd backend
+npm install
+```
 
-### Analyzing the Bundle Size
+Create a `.env` file inside `backend/`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
 
-### Making a Progressive Web App
+Start the backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm run dev
+```
 
-### Advanced Configuration
+### 3. Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+cd ../frontend
+npm install
+npm start
+```
 
-### Deployment
+Visit: [http://localhost:3000](http://localhost:3000)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🛡️ Authentication Flow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Register new users with name, email, password
+- Passwords are hashed using `bcrypt`
+- JWT tokens used for protected routes
+- Auth token stored in local storage
+
+---
+
+## 🔐 Admin Features
+
+- Add/Edit/Delete products
+- Manage users
+- View orders
+- Access admin panel via `/admin/dashboard`
+
+---
+
+## 📄 .gitignore Example
+
+```gitignore
+# Node
+node_modules/
+.env
+
+# React
+build/
+.DS_Store
+```
+
+---
+
+## 💡 Future Enhancements
+
+- ✅ OTP-based login
+- 🛒 Coupon system
+- 🌙 Dark mode
+- 📊 Sales analytics for admin
+- 📱 Progressive Web App (PWA) support
+
+---
+
+## 👤 Author
+
+**Nikil Kumar**  
+Java Backend Developer | AI Enthusiast  
+- GitHub: [beingnikil07](https://github.com/beingnikil07)  
+- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/nikilkumar07)  
+- Portfolio: [your-portfolio.com](https://nikhilrana07.vercel.app/)
+
+---
+
+> If you found this project helpful, don't forget to ⭐ the repo and share it with others!
